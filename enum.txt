@@ -1,0 +1,12 @@
+
+typedef enum
+{
+    EVT_EMPTY = 0,          // some comment
+    EVT_RESET,              // some more comment
+
+    EVT_TEST1,
+    EVT_TEST2,
+    EVT_TEST3,
+
+    NUMBER_OF_EVENTS
+} eEventId;
