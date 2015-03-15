@@ -6,7 +6,7 @@ typedef enum
     
     EVT_TEST1,      
     EVT_T2,         
-    EVT_LONGER_TEST3
+    EVT_LONGER_TEST3,
     
     NUMBER_OF_EVENTS
 } eEventId;
