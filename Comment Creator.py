@@ -1,13 +1,15 @@
 import re
 import os
-os.chdir("C:/Users/Mark/Desktop")
-enumsrd = open("enum.txt", "r")
+user = input("What is your user file")
+enumsFile = input("Which enum file do you want to edit on your Desktop")
+os.chdir("C:/Users/"+user+"/Desktop")
+enumsrd = open(enumsFile, "r")
 text = enumsrd.read()
-enums = open("enumnew.txt", "w")
+enums = open(enumsFile+"_new.txt", "w")
 stop = False
 
 line = []
-long = 1
+long = 0
 new = 0
 for letter in text:
     if letter is "\n":
@@ -49,6 +51,7 @@ for letter in text:
     else:
         line.append(letter)
 
+incorrect = False
 number = 0
 line = []
 for letter in text:
@@ -61,14 +64,14 @@ for letter in text:
                 if stop == False:
                     current += 1
             else:
-                if stop == False:
-                    stop = True
-                else:
-                    pass
+                stop = True
         final = long - current
+        if incorrect == True:
+            final += 1
+            incorrect = False
         stop = False
         
-        if re.search(",", line):
+        if re.search(",", line) or re.search("NUMBER_OF_EVENTS$", line):
             number += 1
             enums.write(line)
             if not re.search("//", line):
@@ -78,17 +81,8 @@ for letter in text:
             enums.write(" "+str(number))
             line = []
             line.append(letter)
+            incorrect = True
 
-        elif re.search("NUMBER_OF_EVENTS$", line):
-            number += 1
-            enums.write(line)
-            if not re.search ("//", line):
-                for times in range(final):
-                    enums.write(" ")
-                enums.write("//")
-            enums.write(" "+str(number))
-            line = []
-            line.append(letter)
 
         else:
             enums.write(line+"\n")
@@ -97,6 +91,6 @@ for letter in text:
     else:
         line.append(letter)
 enums.close()
-enumsrd = open("enumnew.txt", "r")
+enumsrd = open(enumsFile+"_new.txt", "r")
 print(enumsrd.read())
 
