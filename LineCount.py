@@ -7,18 +7,18 @@ text = enumsrd.read()
 print(text)
 enums = open("new"+file, "w")
 stop = False
-lastLine = str('NUMBER_OF_EVENTS$')
+lastLine = "NUMBER_OF_EVENTS$"
 
 line = []
 long = 0
 new = 0
 for letter in text:
-    if letter is str('\n'):
+    if letter == "'\n":
         line = ''.join(line)
 
         if re.search(',', line):
             for letters in line:
-                if letters is not str('/'):
+                if letters != ("/"):
                     if stop == False:
                         new += 1
                 else:
@@ -32,7 +32,7 @@ for letter in text:
 
         elif re.search(lastLine, line):
             for letters in line:
-                if letters is not str('/'):
+                if letters != "/":
                     if stop == False:
                         new += 1
                 else:
@@ -58,10 +58,10 @@ line = []
 for letter in text:
     current = 0
     final = 0
-    if letter is str('\n'):
+    if letter == "\n":
         line = ''.join(line)
         for letters in line:
-            if letters is not str('/'):
+            if letters != "/":
                 if stop == False:
                     current += 1
             else:
@@ -72,14 +72,14 @@ for letter in text:
             incorrect = False
         stop = False
         
-        if re.search(str(','), line) or re.search(lastLine, line):
+        if re.search((","), line) or re.search(lastLine, line):
             number += 1
             enums.write(line)
-            if not re.search(str('//'), line):
+            if not re.search(("//"), line):
                 for times in range(final):
                     enums.write(' ')
-                enums.write(str('//'))
-            enums.write(' '+str(number))
+                enums.write(("//"))
+            enums.write(" "+str(number))
             line = []
             line.append(letter)
             incorrect = True
