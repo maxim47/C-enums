@@ -13,7 +13,7 @@ line = []
 long = 0
 new = 0
 for letter in text:
-    if letter == "'\n":
+    if letter == "\n":
         line = ''.join(line)
 
         if re.search(',', line):
