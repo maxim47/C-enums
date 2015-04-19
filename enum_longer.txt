@@ -13,7 +13,7 @@ typedef enum
     EVT_LONGER_TEST3,
     EVT_TEST1,      
     EVT_T2,         
-    EVT_LONGER_TEST3,
+    EVT_LONGER_TEST3,	    // even more comment
     EVT_TEST1,      
     EVT_T2,         
     EVT_LONGER_TEST3,
